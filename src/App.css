@@ -1,0 +1,78 @@
+:root {
+  --white: hsl(0, 0%, 100%);
+  --mainBg: hsl(230, 100%, 99%);
+  --darkBlue: hsl(227, 35%, 25%);
+  --grayishBlue: hsl(225, 20%, 60%);
+  --discountBackground: hsl(14, 92%, 95%);
+  --discountText: hsl(15, 100%, 70%);
+  --emptySliderBar: hsl(224, 65%, 95%);
+  --toggleBg: hsl(223, 50%, 87%);
+}
+
+#root {
+}
+
+.app {
+  background: url('./images/bg-pattern.svg') no-repeat;
+  background-color: var(--mainBg);
+  background-position: top left;
+  background-size: 100%;
+  min-height: 100vh;
+  padding-top: 7rem;
+  padding-bottom: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.header-app {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 6rem;
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: block;
+    width: 146px;
+    height: 145px;
+    background: url('./images/pattern-circles.svg') no-repeat center;
+  }
+
+  .main-title {
+    font-size: 1.9rem;
+    color: var(--darkBlue);
+    margin-bottom: 0.8rem;
+  }
+
+  .sutitle {
+    font-size: 1rem;
+    color: var(--grayishBlue);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .app {
+    background-size: 150%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .app {
+    padding: 5rem 1rem;
+    background-size: 400%;
+  }
+  .header-app {
+    &:before {
+      top: 0;
+    }
+  }
+}
