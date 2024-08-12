@@ -9,11 +9,8 @@
   --toggleBg: hsl(223, 50%, 87%);
 }
 
-#root {
-}
-
 .app {
-  background: url('./images/bg-pattern.svg') no-repeat;
+  background: url('/images/bg-pattern.svg') no-repeat;
   background-color: var(--mainBg);
   background-position: top left;
   background-size: 100%;
@@ -44,7 +41,7 @@
     display: block;
     width: 146px;
     height: 145px;
-    background: url('./images/pattern-circles.svg') no-repeat center;
+    background: url('/images/pattern-circles.svg') no-repeat center;
   }
 
   .main-title {

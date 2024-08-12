@@ -94,7 +94,7 @@
       display: block;
       width: 10px;
       height: 10px;
-      background: url('./images/icon-check.svg');
+      background: url('/images/icon-check.svg');
       background-repeat: no-repeat;
       background-size: cover;
     }
