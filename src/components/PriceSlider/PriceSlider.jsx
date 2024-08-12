@@ -3,11 +3,6 @@ import { ConfigProvider, Slider, Switch } from 'antd';
 
 import styles from './PriceSlider.module.css';
 
-/*
-  Превратить все это в форму.
-  На выходе мы должны запомнить выбор юзера. И перенаправить его на (условную) форму заказа.
-*/
-
 const PriceSlider = () => {
   const price = {
     1: {
@@ -47,7 +42,6 @@ const PriceSlider = () => {
     },
   };
 
-  // const [inputValue, setInputValue] = useState(3);
   const [inputValue, setInputValue] = useState(3);
   const [checked, setChecked] = useState(false);
 
@@ -59,8 +53,21 @@ const PriceSlider = () => {
     setInputValue(newValue);
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (checked) {
+      return alert(
+        `You have selected ${price[inputValue].view} pageviews for $${price[inputValue].discountedCost}/month`
+      );
+    } else {
+      return alert(
+        `You have selected ${price[inputValue].view} pageviews for $${price[inputValue].cost}/month`
+      );
+    }
+  };
+
   return (
-    <div className={styles.priceSlider}>
+    <form className={styles.priceSlider} onSubmit={onSubmit}>
       <div className={styles.sliderBody}>
         <h2 style={{ display: 'none' }}>PriceSlider</h2>
         <p className={styles.textViews}>
@@ -82,10 +89,7 @@ const PriceSlider = () => {
           theme={{
             components: {
               Slider: {
-                handleColor: 'hsl(174, 77%, 80%)',
-                handleActiveColor: 'hsl(174, 86%, 45%)',
                 handleActiveOutlineColor: 'transparent',
-
                 handleLineWidthHover: 0,
                 handleLineWidth: 0,
                 handleSizeHover: 35,
@@ -98,9 +102,8 @@ const PriceSlider = () => {
               },
             },
             token: {
-              colorBgElevated: 'hsl(174, 86%, 45%)',
+              colorBgElevated: 'transparent',
               borderRadiusXS: 10,
-              // colorPrimaryBorderHover: 'hsl(174, 86%, 45%)',
             },
           }}
         >
@@ -113,11 +116,10 @@ const PriceSlider = () => {
             className={styles.slider}
             styles={{
               handle: {
-                // background: "url('./images/icon-slider.svg')",
+                background:
+                  'hsl(174, 86%, 45%) url("./images/icon-slider.svg") no-repeat center',
                 boxShadow: '0px 10px 20px 5px hsl(174, 77%, 80%)',
                 borderRadius: '50%',
-
-                // background: 'hsl(174, 86%, 45%)',
               },
             }}
           />
@@ -160,7 +162,7 @@ const PriceSlider = () => {
         </div>
         <button className={styles.button}>Start my trial</button>
       </div>
-    </div>
+    </form>
   );
 };
 
